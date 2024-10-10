@@ -50,6 +50,137 @@ TypeError: db.hepl is not a function
 test> db.help()
 
 ##########################################################
+
+
+test> db.product.insertOne({"prodId":201,"prodName":"Mobile","prodCost":25000});
+{
+  acknowledged: true,
+  insertedId: ObjectId('67075ad8622ca43f8186b01e')
+}
+test> show collections
+product
+test> db.product.find()
+[
+  {
+    _id: ObjectId('67075ad8622ca43f8186b01e'),
+    prodId: 201,
+    prodName: 'Mobile',
+    prodCost: 25000
+  }
+]
+test> db.product.insertOne({"prodId":202,"prodName":"Laptop","prodCost":55000});
+{
+  acknowledged: true,
+  insertedId: ObjectId('67075c06622ca43f8186b01f')
+}
+test> db.product.find()
+[
+  {
+    _id: ObjectId('67075ad8622ca43f8186b01e'),
+    prodId: 201,
+    prodName: 'Mobile',
+    prodCost: 25000
+  },
+  {
+    _id: ObjectId('67075c06622ca43f8186b01f'),
+    prodId: 202,
+    prodName: 'Laptop',
+    prodCost: 55000
+  }
+]
+test> db.product.findOne()
+{
+  _id: ObjectId('67075ad8622ca43f8186b01e'),
+  prodId: 201,
+  prodName: 'Mobile',
+  prodCost: 25000
+}
+test> db.product.findOne({"prodId":202})
+{
+  _id: ObjectId('67075c06622ca43f8186b01f'),
+  prodId: 202,
+  prodName: 'Laptop',
+  prodCost: 55000
+}
+test> db.product.countDocuments
+[Function: countDocuments] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  serverVersions: [ '4.0.3', '999.999.999' ],
+  returnsPromise: true,
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+test> db.product.countDocuments()
+2
+test> db.product.insertOne({"prodId":203,"prodName":"Tablet","prodCost":40000,"model":"Samsung"});
+{
+  acknowledged: true,
+  insertedId: ObjectId('67075d36622ca43f8186b020')
+}
+test> db.product.find()
+[
+  {
+    _id: ObjectId('67075ad8622ca43f8186b01e'),
+    prodId: 201,
+    prodName: 'Mobile',
+    prodCost: 25000
+  },
+  {
+    _id: ObjectId('67075c06622ca43f8186b01f'),
+    prodId: 202,
+    prodName: 'Laptop',
+    prodCost: 55000
+  },
+  {
+    _id: ObjectId('67075d36622ca43f8186b020'),
+    prodId: 203,
+    prodName: 'Tablet',
+    prodCost: 40000,
+    model: 'Samsung'
+  }
+]
+test> db.product.insertOne({"prodId":204,"prodName":"Watch","prodCost":35000,"model":"Apple", "item": {"itemId":101,"intemMode":"Refurbished"}});
+{
+  acknowledged: true,
+  insertedId: ObjectId('67075ddc622ca43f8186b021')
+}
+test> db.product.find()
+[
+  {
+    _id: ObjectId('67075ad8622ca43f8186b01e'),
+    prodId: 201,
+    prodName: 'Mobile',
+    prodCost: 25000
+  },
+  {
+    _id: ObjectId('67075c06622ca43f8186b01f'),
+    prodId: 202,
+    prodName: 'Laptop',
+    prodCost: 55000
+  },
+  {
+    _id: ObjectId('67075d36622ca43f8186b020'),
+    prodId: 203,
+    prodName: 'Tablet',
+    prodCost: 40000,
+    model: 'Samsung'
+  },
+  {
+    _id: ObjectId('67075ddc622ca43f8186b021'),
+    prodId: 204,
+    prodName: 'Watch',
+    prodCost: 35000,
+    model: 'Apple',
+    item: { itemId: 101, intemMode: 'Refurbished' }
+  }
+]
+
 ##########################################################
 ##########################################################
 ##########################################################
